@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Kviskoteka</title>
+            </f:facet>
+        </h:head>
+
+        <h:body style="background-color: #E6E6FA">
+
+            <p:layout fullPage="true">
+
+             <p:layoutUnit position="north" size="55" style="background-color: azure" resizable="true" closable="true" collapsible="true">   
+                 <table width="100%"><tr align="center">
+                            <td align="left" width="9%"> <p:commandButton action="#{LogInKontroler.logout()}" style="height: 30px" value="Log out" /></td>
+                        <td align="center" width="91%">  <h:outputLabel style="font-weight: bold;" value="Stranica za menjanje igre dana"/></td></tr></table>
+            </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="40" style="background-color: azure" closable="true" collapsible="true">
+                   <center> ETF Ekviskoteka </center>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                       <h:form>
+   <p:tabMenu activeIndex="#{param.i}">
+       <p:menuitem value="Definiši igru dana" outcome="admin.xhtml">
+        <f:param name="i" value="0" />
+    </p:menuitem>
+    <p:menuitem value="Proveri pristigle zahteve" outcome="adminZahtevi.xhtml">
+        <f:param name="i" value="1" />
+    </p:menuitem>
+    <p:menuitem value="Modifikacija igre dana" outcome="adminModifikacija.xhtml">
+        <f:param name="i" value="2" />
+    </p:menuitem>
+</p:tabMenu>
+   </h:form>
+                    <center>
+                    <h:form>
+        <h3> Stranica posvećena menjanju igre dana za datum #{adminModifikacijaKontroler.datumZaModifikaciju} </h3>
+                           
+        <p:tabView style="width: 800px">
+        <p:tab title="Dodajte anagram">
+            
+            <p:dataTable value="#{adminModifikacijaKontroler.anagrami}" var="ana" rendered="#{!adminModifikacijaKontroler.dodatAnagram}">
+                    
+                    <p:column><f:facet name="header"> Zagonetka</f:facet>
+                        #{ana.zagonetka}</p:column>
+                    <p:column><f:facet name="header"> Rešenje</f:facet>
+                        #{ana.resenje}</p:column>
+                        <p:column><center><p:commandButton value="Dodaj" action="#{adminModifikacijaKontroler.dodajAnagram(ana)}"></p:commandButton>
+                            </center>
+                        </p:column>
+                    
+                </p:dataTable>
+            
+            <h:outputText value="#{adminModifikacijaKontroler.porukaAnagram}" rendered="#{adminModifikacijaKontroler.dodatAnagram}"></h:outputText>
+        </p:tab>
+        <p:tab title="Dodajte pitanja za igru pehar">
+            <p:dataTable value="#{adminModifikacijaKontroler.pehari}" var="pojedinacno" rendered="#{!adminModifikacijaKontroler.prikaziGrupe}">
+                    
+                        <p:column colspan="2"><center><p:commandButton value="Dodajte grupu pitanja" action="#{adminModifikacijaKontroler.dodajGrupuPitanja(pojedinacno)}" /></center> </p:column>
+                    
+                        <p:column>#{pojedinacno.id}</p:column>
+                    
+                   
+                </p:dataTable>
+            <h:outputText value="#{adminModifikacijaKontroler.porukaGrupe}" rendered="#{adminModifikacijaKontroler.prikaziGrupe}"></h:outputText>
+            
+        </p:tab>
+     
+    </p:tabView>
+        
+        <p:commandButton value="Modifikuj igru" action="#{adminModifikacijaKontroler.promeni()}"></p:commandButton>
+ <br/>
+ <h:outputText value="#{adminModifikacijaKontroler.poruka}" rendered="#{adminModifikacijaKontroler.mess}"></h:outputText>
+ 
+                 
+        </h:form>
+        </center>
+        </p:layoutUnit>
+
+        </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+

@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Kviskoteka</title>
+            </f:facet>
+        </h:head>
+
+        <h:body style="background-color: #E6E6FA">
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="55" resizable="false" style="background-color: azure" closable="true" collapsible="true">
+                    <table width="100%"><tr align="center">
+                            <td align="left" width="9%"> <p:commandButton action="#{LogInKontroler.logout()}" style="height: 30px" value="Log out" /></td>
+                        <td align="center" width="91%">  <h:outputLabel style="font-weight: bold;" value="IGRA DANA - 5x5"/></td></tr></table>
+                 </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="40" closable="true" style="background-color: azure" collapsible="true">
+                    <center> Kviskoteka ETF </center>
+                </p:layoutUnit>
+
+
+                <p:layoutUnit position="center" >
+                    <center>
+                        <p:panel style="width: 300px; height: 400px" id="rad">
+        <h:form>
+            
+<p:commandButton id="txt_count" value="#{IgraDanaPetKontroler.tajmer}" />
+<p:poll interval="1" widgetVar="poll" listener="#{IgraDanaPetKontroler.dekrement()}" update="txt_count"/>
+            
+
+            <br/><br/>
+            <table align="center" style="table-layout: fixed" width="250" >
+                <tr align="center" >
+                    <td align="center" height="40"><p:commandButton value="?" rendered="#{!IgraDanaPetKontroler.flagSlova[0]}"/><p:outputLabel style="font-weight: bold" value="#{IgraDanaPetKontroler.slova[0]}" rendered="#{IgraDanaPetKontroler.flagSlova[0]}"/></td>
+                    <td align="center" height="40"><p:commandButton value="?" rendered="#{!IgraDanaPetKontroler.flagSlova[1]}"/><p:outputLabel style="font-weight: bold" value="#{IgraDanaPetKontroler.slova[1]}" rendered="#{IgraDanaPetKontroler.flagSlova[1]}"/></td>
+                    <td align="center" height="40"><p:commandButton value="?" rendered="#{!IgraDanaPetKontroler.flagSlova[2]}"/><p:outputLabel style="font-weight: bold" value="#{IgraDanaPetKontroler.slova[2]}" rendered="#{IgraDanaPetKontroler.flagSlova[2]}"/></td>
+            <td align="center" height="40"><center><p:commandButton value="?" rendered="#{!IgraDanaPetKontroler.flagSlova[3]}"/><p:outputLabel style="font-weight: bold" value="#{IgraDanaPetKontroler.slova[3]}" rendered="#{IgraDanaPetKontroler.flagSlova[3]}"/></center></td>
+                    <td align="center" height="40"><p:commandButton value="?" rendered="#{!IgraDanaPetKontroler.flagSlova[4]}"/><p:outputLabel style="font-weight: bold" value="#{IgraDanaPetKontroler.slova[4]}" rendered="#{IgraDanaPetKontroler.flagSlova[4]}"/></td>
+                </tr>
+                
+                <tr align="center">
+                    <td height="40"><p:commandButton value="?" rendered="#{!IgraDanaPetKontroler.flagSlova[5]}"/><p:outputLabel style="font-weight: bold" value="#{IgraDanaPetKontroler.slova[5]}" rendered="#{IgraDanaPetKontroler.flagSlova[5]}"/></td>
+                    <td height="40"><p:commandButton value="?" rendered="#{!IgraDanaPetKontroler.flagSlova[6]}"/><p:outputLabel style="font-weight: bold" value="#{IgraDanaPetKontroler.slova[6]}" rendered="#{IgraDanaPetKontroler.flagSlova[6]}"/></td>
+                    <td height="40"><p:commandButton value="?" rendered="#{!IgraDanaPetKontroler.flagSlova[7]}"/><p:outputLabel style="font-weight: bold" value="#{IgraDanaPetKontroler.slova[7]}" rendered="#{IgraDanaPetKontroler.flagSlova[7]}"/></td>
+                    <td height="40"><p:commandButton value="?" rendered="#{!IgraDanaPetKontroler.flagSlova[8]}"/><p:outputLabel style="font-weight: bold" value="#{IgraDanaPetKontroler.slova[8]}" rendered="#{IgraDanaPetKontroler.flagSlova[8]}"/></td>
+                    <td height="40"><p:commandButton value="?" rendered="#{!IgraDanaPetKontroler.flagSlova[9]}"/><p:outputLabel style="font-weight: bold" value="#{IgraDanaPetKontroler.slova[9]}" rendered="#{IgraDanaPetKontroler.flagSlova[9]}"/></td>
+                </tr>
+                
+                <tr align="center">
+                    <td height="40"><p:commandButton value="?" rendered="#{!IgraDanaPetKontroler.flagSlova[10]}"/><p:outputLabel style="font-weight: bold" value="#{IgraDanaPetKontroler.slova[10]}" rendered="#{IgraDanaPetKontroler.flagSlova[10]}"/></td>
+                    <td height="40"><p:commandButton value="?" rendered="#{!IgraDanaPetKontroler.flagSlova[11]}"/><p:outputLabel style="font-weight: bold" value="#{IgraDanaPetKontroler.slova[11]}" rendered="#{IgraDanaPetKontroler.flagSlova[11]}"/></td>
+                    <td height="40"><p:commandButton value="?" rendered="#{!IgraDanaPetKontroler.flagSlova[12]}"/><p:outputLabel style="font-weight: bold" value="#{IgraDanaPetKontroler.slova[12]}" rendered="#{IgraDanaPetKontroler.flagSlova[12]}"/></td>
+                    <td height="40"><p:commandButton value="?" rendered="#{!IgraDanaPetKontroler.flagSlova[13]}"/><p:outputLabel style="font-weight: bold" value="#{IgraDanaPetKontroler.slova[13]}" rendered="#{IgraDanaPetKontroler.flagSlova[13]}"/></td>
+                    <td height="40"><p:commandButton value="?" rendered="#{!IgraDanaPetKontroler.flagSlova[14]}"/><p:outputLabel style="font-weight: bold" value="#{IgraDanaPetKontroler.slova[14]}" rendered="#{IgraDanaPetKontroler.flagSlova[14]}"/></td>
+                </tr>
+                
+                <tr align="center">
+                    <td height="40"><p:commandButton value="?" rendered="#{!IgraDanaPetKontroler.flagSlova[15]}"/><p:outputLabel style="font-weight: bold" value="#{IgraDanaPetKontroler.slova[15]}" rendered="#{IgraDanaPetKontroler.flagSlova[15]}"/></td>
+                    <td height="40"><p:commandButton value="?" rendered="#{!IgraDanaPetKontroler.flagSlova[16]}"/><p:outputLabel style="font-weight: bold" value="#{IgraDanaPetKontroler.slova[16]}" rendered="#{IgraDanaPetKontroler.flagSlova[16]}"/></td>
+                    <td height="40"><p:commandButton value="?" rendered="#{!IgraDanaPetKontroler.flagSlova[17]}"/><p:outputLabel style="font-weight: bold" value="#{IgraDanaPetKontroler.slova[17]}" rendered="#{IgraDanaPetKontroler.flagSlova[17]}"/></td>
+                    <td height="40"><p:commandButton value="?" rendered="#{!IgraDanaPetKontroler.flagSlova[18]}"/><p:outputLabel style="font-weight: bold" value="#{IgraDanaPetKontroler.slova[18]}" rendered="#{IgraDanaPetKontroler.flagSlova[18]}"/></td>
+                    <td height="40"><p:commandButton value="?" rendered="#{!IgraDanaPetKontroler.flagSlova[19]}"/><p:outputLabel style="font-weight: bold" value="#{IgraDanaPetKontroler.slova[19]}" rendered="#{IgraDanaPetKontroler.flagSlova[19]}"/></td>
+                </tr>
+                
+                <tr align="center">
+                    <td height="40"><p:commandButton value="?" rendered="#{!IgraDanaPetKontroler.flagSlova[20]}"/><p:outputLabel style="font-weight: bold" value="#{IgraDanaPetKontroler.slova[20]}" rendered="#{IgraDanaPetKontroler.flagSlova[20]}"/></td>
+                    <td height="40"><p:commandButton value="?" rendered="#{!IgraDanaPetKontroler.flagSlova[21]}"/><p:outputLabel style="font-weight: bold" value="#{IgraDanaPetKontroler.slova[21]}" rendered="#{IgraDanaPetKontroler.flagSlova[21]}"/></td>
+                    <td height="40"><p:commandButton value="?" rendered="#{!IgraDanaPetKontroler.flagSlova[22]}"/><p:outputLabel style="font-weight: bold" value="#{IgraDanaPetKontroler.slova[22]}" rendered="#{IgraDanaPetKontroler.flagSlova[22]}"/></td>
+                    <td height="40"><p:commandButton value="?" rendered="#{!IgraDanaPetKontroler.flagSlova[23]}"/><p:outputLabel style="font-weight: bold" value="#{IgraDanaPetKontroler.slova[23]}" rendered="#{IgraDanaPetKontroler.flagSlova[23]}"/></td>
+                    <td height="40"><p:commandButton value="?" rendered="#{!IgraDanaPetKontroler.flagSlova[24]}"/><p:outputLabel style="font-weight: bold" value="#{IgraDanaPetKontroler.slova[24]}" rendered="#{IgraDanaPetKontroler.flagSlova[24]}"/></td>
+                    </tr>
+            </table>  
+        </h:form>
+                        
+                        <h:form>
+                            <p:inputText id="unos" value="#{IgraDanaPetKontroler.unesenoSlovo}" rendered="#{!IgraDanaPetKontroler.stop}" placeholder="Unesite slovo" validatorMessage="Molimo Vas da unesete samo jedno slovo!">
+                            <f:validateRegex pattern="[a-z]{1}|[A-Z]{1}" ></f:validateRegex>
+        
+                            <p:messages for="unos" ></p:messages>
+                        </p:inputText>
+                            <br/>
+                            <p:commandButton value="Provera" update="rad" action="#{IgraDanaPetKontroler.proveraUnesenogSlova()}"/>
+                           <br/>
+                        <h:outputText id="por" value="#{IgraDanaPetKontroler.poruka}" rendered="#{IgraDanaPetKontroler.stop}"></h:outputText>
+                    
+                        </h:form>
+
+                        </p:panel>
+                    </center>
+                    
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+
+
+

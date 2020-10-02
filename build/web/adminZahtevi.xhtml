@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Kviskoteka</title>
+            </f:facet>
+        </h:head>
+
+        <h:body style="background-color: #E6E6FA">
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="55" resizable="true" style="background-color: azure" closable="true" collapsible="true">
+                    <table width="100%"><tr align="center">
+                            <td align="left" width="9%"> <p:commandButton action="#{LogInKontroler.logout()}" style="height: 30px" value="Log out" /></td>
+                        <td align="center" width="91%">  <h:outputLabel style="font-weight: bold;" value="Stranica posvećena adminu"/></td></tr></table>
+                </p:layoutUnit>
+                
+                <p:layoutUnit position="south" size="40" style="background-color: azure" closable="true" collapsible="true">
+                    <center> Kviskoteka ETF </center>
+                </p:layoutUnit>
+
+
+                <p:layoutUnit position="center">
+                    <center>
+                                                <h:form>
+   <p:tabMenu activeIndex="#{param.i}">
+       <p:menuitem value="Definiši igru dana" outcome="admin.xhtml">
+        <f:param name="i" value="0" />
+    </p:menuitem>
+    <p:menuitem value="Proveri pristigle zahteve" outcome="adminZahtevi.xhtml">
+        <f:param name="i" value="1" />
+    </p:menuitem>
+    <p:menuitem value="Modifikacija igre dana" outcome="adminModifikacija.xhtml">
+        <f:param name="i" value="2" />
+    </p:menuitem>
+</p:tabMenu>
+   </h:form>                       
+        <h:form>
+            <br/><br/>
+            <p:panel style="width: 500px">
+            <p:dataTable value="#{AdminKontroler.waiting}" var="zahtev">
+                
+                <p:column><f:facet name="header">Ime</f:facet>#{zahtev.ime} </p:column>
+                <p:column><f:facet name="header">Prezime</f:facet> #{zahtev.prezime} </p:column>
+                <p:column> <p:commandButton value="Prihvati" action="#{AdminKontroler.prihvatiZahtev(zahtev)}"></p:commandButton></p:column>
+                <p:column> <p:commandButton value="Obriši" action="#{AdminKontroler.obrisiZahtev(zahtev)}"></p:commandButton></p:column>
+            </p:dataTable>
+               
+             <p:messages id="messages" showDetail="true" closable="true">
+                <p:autoUpdate/>
+            </p:messages>
+            </p:panel> 
+        </h:form>
+                    </center>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+
+
+
+

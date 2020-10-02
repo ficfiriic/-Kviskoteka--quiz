@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Kviskoteka</title>
+            </f:facet>
+        </h:head>
+
+        <h:body style="background-color: #E6E6FA">
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="55" resizable="true" style="background-color: azure" closable="true" collapsible="true">
+                    <table width="100%"><tr align="center">
+                            <td align="left" width="9%"> <p:commandButton action="#{LogInKontroler.logout()}" style="height: 30px" value="Log out" /></td>
+                        <td align="center" width="91%">  <h:outputLabel style="font-weight: bold;" value="KRAJ IGRE"/></td></tr></table>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="40" style="background-color: azure" closable="true" collapsible="true">
+                    <center> ETF Ekviskoteka </center>
+                </p:layoutUnit>
+
+ <p:layoutUnit position="center">
+   <center>
+       <br/><br/><br/>
+  <h:form>
+      <p:panel header="Vaš rezultat" style="height: 300px; width: 300px">
+      <br/><br/>    
+      <p:panelGrid columns="2">
+          <h:outputText value="Anagram:"/>
+          <h:outputText value="#{KrajIgreKontroler.moi.anagram}"></h:outputText>    
+          
+          <h:outputText value="Moj broj:"/>
+          <h:outputText value="#{KrajIgreKontroler.moi.mojBroj}"></h:outputText>    
+          
+          <h:outputText value="Zanimljiva geografija:"/>
+          <h:outputText value="#{KrajIgreKontroler.moi.geografija}"></h:outputText>    
+          
+          <h:outputText value="5x5:"/>
+          <h:outputText value="#{KrajIgreKontroler.moi.pet}"></h:outputText>    
+          
+          <h:outputText value="Pehar:"/>
+          <h:outputText value="#{KrajIgreKontroler.moi.pehar}"></h:outputText>    
+          
+          <h:outputText value="Ukupno:"/>
+          <h:outputText value="#{KrajIgreKontroler.moi.rezultat}" style="font-weight: bold"></h:outputText>    
+          </p:panelGrid> 
+      </p:panel>
+          
+  </h:form>
+ </center>
+</p:layoutUnit>
+                
+</p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+

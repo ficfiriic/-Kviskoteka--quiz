@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Kviskoteka</title>
+            </f:facet>
+        </h:head>
+
+        <h:body style="background-color: #E6E6FA">
+
+            <p:layout fullPage="true">
+            <p:layoutUnit position="north" size="55" resizable="true" style="background-color: azure" closable="true" collapsible="true">
+                <table width="100%"><tr align="center">
+                            <td align="left" width="9%"> <p:commandButton action="index.xhtml?faces-redirect=true" style="height: 30px" value="Log out" /></td>
+                        <td align="center" width="91%">  <h:outputLabel style="font-weight: bold;" value="Ovde se možete registrovati!"/></td></tr></table>
+            </p:layoutUnit>
+                
+                <p:layoutUnit position="south" size="40" style="background-color: azure" closable="true" collapsible="true">
+                    <center>
+                    Kviskoteka ETF    
+                    </center>
+                    </p:layoutUnit>
+
+
+                <p:layoutUnit position="center" resizable="true">
+                    <center><p:panel style="width: 600px" id="panel"> 
+            <h:form enctype="multipart/form-data">
+                                
+            <h:panelGrid columns="2">
+            Ime:
+            <p:inputText value="#{RegistracijaKontroler.ime}" id="ime" placeholder="Unesite ime">
+            </p:inputText>
+           
+            
+            Prezime:
+            <p:inputText id="prezime" value="#{RegistracijaKontroler.prezime}"  placeholder="Unesite prezime">
+            
+            </p:inputText>
+           
+            
+            Zanimanje:
+            <p:inputText id="zanimanje" value="#{RegistracijaKontroler.zanimanje}" placeholder="Unesite zanimanje">
+            
+            </p:inputText>
+            
+            
+            E-mail:
+            <p:inputText id="mail" value="#{RegistracijaKontroler.email}" placeholder="Unesite e-mail">
+            </p:inputText>
+            
+            Pol:
+            <p:selectOneRadio value="#{RegistracijaKontroler.pol}" id="pol" >
+                <f:selectItem itemLabel="M" itemValue="1"></f:selectItem>                
+                <f:selectItem itemLabel="Ž" itemValue="2"></f:selectItem>
+            </p:selectOneRadio>
+            
+            
+            
+            Korisničko ime:
+            <p:inputText value="#{RegistracijaKontroler.username}" id="user" placeholder="Unesite username">
+            </p:inputText>
+            
+            Lozinka:
+            <p:password id="lozinka" value="#{RegistracijaKontroler.password}" placeholder="Unesite password">
+            </p:password>
+            
+            Potvrda lozinke:
+            <p:password value="#{RegistracijaKontroler.ponovoPassword}" id="lozinkaPonovo" placeholder="Ponovo unesite password">
+            </p:password>
+            
+            Izaberite sigurnosno pitanje:
+            <h:selectOneMenu value="#{RegistracijaKontroler.pitanje}" id="pitanje" >
+                <f:selectItem itemLabel="Ime majke?" itemValue="1"> </f:selectItem>
+                <f:selectItem itemLabel="Ime oca?" itemValue="2"> </f:selectItem>
+                <f:selectItem itemLabel="Ime osnovne škole?" itemValue="3"> </f:selectItem>
+                <f:selectItem itemLabel="Ime srednje škole?" itemValue="4"> </f:selectItem>
+                <f:selectItem itemLabel="Omiljena boja?" itemValue="5"> </f:selectItem>
+            </h:selectOneMenu>
+            
+            Odgovor na sigurnosno pitanje:
+            <p:inputText id="odgovor" value="#{RegistracijaKontroler.odgovor}" placeholder="Unesite odgovor">
+            </p:inputText>
+            
+            
+            Profilna forografija:
+            <p:fileUpload value="#{RegistracijaKontroler.pic}" auto="true" id="slika" fileUploadListener="#{RegistracijaKontroler.handleFileUpload}" mode="advanced"
+                                  fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/">
+               
+            </p:fileUpload>
+            
+            
+            JMBG:
+            <p:inputText value="#{RegistracijaKontroler.jmbg}" id="jmbg" placeholder="Unesite jmbg">
+            </p:inputText></h:panelGrid>
+            <br/>
+            <h:form>
+            <p:messages id="messages" showDetail="true" closable="true">
+            <p:autoUpdate />
+            </p:messages></h:form>
+            
+                   
+            <p:commandButton value="Submit" update="panel" action="#{RegistracijaKontroler.registracija()}"></p:commandButton>
+            
+            </h:form>
+                        </p:panel>
+                        
+                        <h:outputLabel value="#{RegistracijaKontroler.poruka}" rendered="#{RegistracijaKontroler.ok}"/>
+                        </center>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+

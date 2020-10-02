@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Kviskoteka</title>
+            </f:facet>
+        </h:head>
+
+        <h:body style="background-color: #E6E6FA">
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="60" resizable="false" style="background-color: azure" closable="true" collapsible="true">
+                    <center>
+                       <h4> Dobrodošli!</h4>    
+                    </center>
+                     </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="100" closable="true" style="background-color: azure" collapsible="true">
+                    <center> Kviskoteka ETF </center>
+                </p:layoutUnit>
+
+
+                <p:layoutUnit position="center">
+                    <center>
+                    <br/><br/>
+        <h:form>
+            <p:panel header="Log In" id="head" style="width: 50%">
+            <h:panelGrid columns="2">
+                Username:
+                <p:inputText id ="user" value="#{LogInKontroler.username}" placeholder="Unesite username" />
+                
+                Password:
+                <p:password id="pass" value="#{LogInKontroler.password}" placeholder="Unesite password" />
+           
+            </h:panelGrid>
+            <p:messages id="messages" showDetail="true" closable="true">
+                <p:autoUpdate/>
+            </p:messages>    
+                
+            <p:commandButton value="Log in" action="#{LogInKontroler.login()}"></p:commandButton> 
+            <br/><br/>        
+            Nemate nalog?
+            <h:commandLink value="Registrujte se" action="registracija?faces-redirect=true"></h:commandLink>
+            <br/>        
+            <h:commandLink value="Zelite da promenite password?" action="menjanjeLozinke?faces-redirect=true"></h:commandLink>
+            <br/>
+            Nastavite kao
+            <h:commandLink value="gost" action="gost?faces-redirect=true"></h:commandLink>
+           </p:panel> 
+        </h:form>
+
+                    </center>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+
+
+

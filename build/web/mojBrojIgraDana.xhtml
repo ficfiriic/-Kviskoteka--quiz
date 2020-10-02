@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Kviskoteka</title>
+            </f:facet>
+        </h:head>
+
+        <h:body style="background-color: #E6E6FA">
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="55" resizable="true" style="background-color: azure" closable="true" collapsible="true">
+                   <table width="100%"><tr align="center">
+                            <td align="left" width="9%"> <p:commandButton action="#{LogInKontroler.logout()}" style="height: 30px" value="Log out" /></td>
+                        <td align="center" width="91%">  <h:outputLabel style="font-weight: bold;" value="IGRA DANA - moj broj"/></td></tr></table>
+                
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="40" style="background-color: azure" closable="true" collapsible="true">
+                    <center> ETF Ekviskoteka </center>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <center>
+                        <br/><br/>
+       <h:form>      
+     <p:panel style="width: 800px; height: 400px" id="rad" >
+     <p:commandButton id="txt_count" style="font-weight: bold" value="#{mojBrojIgraDanaKontroler.tajmer}" rendered="#{mojBrojIgraDanaKontroler.ok}"/>
+    <p:poll interval="1" widgetVar="poll" listener="#{mojBrojIgraDanaKontroler.inkrement()}" update="txt_count"/>
+    
+     <br/><br/><br/>
+     <p:commandButton style="font-weight: bold; font-size: 36px; font-stretch: extra-expanded" value="#{mojBrojIgraDanaKontroler.trazeniBroj}" rendered="#{mojBrojIgraDanaKontroler.traz}"/>
+           <br/><br/>
+           <table><h3>
+           <tr>
+               <td><p:commandButton style="font-weight: bold; font-size: 24px; font-stretch: extra-expanded" value="#{mojBrojIgraDanaKontroler.prvi}" rendered="#{mojBrojIgraDanaKontroler.p}"/></td>
+    <td><p:commandButton style="font-weight: bold; font-size: 24px; font-stretch: extra-expanded" value="#{mojBrojIgraDanaKontroler.drugi}" rendered="#{mojBrojIgraDanaKontroler.d}"/></td>
+    <td><p:commandButton style="font-weight: bold; font-size: 24px; font-stretch: extra-expanded" value="#{mojBrojIgraDanaKontroler.treci}" rendered="#{mojBrojIgraDanaKontroler.t}"/></td>
+    <td><p:commandButton style="font-weight: bold; font-size: 24px; font-stretch: extra-expanded" value="#{mojBrojIgraDanaKontroler.cetvrti}" rendered="#{mojBrojIgraDanaKontroler.c}"/></td>
+           <td></td>
+           <td colspan="2"></td>
+           <td colspan="2"><p:commandButton style="font-weight: bold; font-size: 24px; font-stretch: extra-expanded" value="#{mojBrojIgraDanaKontroler.peti}" rendered="#{mojBrojIgraDanaKontroler.pe}"/></td>
+           <td></td>
+           <td colspan="2"></td>
+                     
+           <td colspan="3"><p:commandButton style="font-weight: bold; font-size: 24px; font-stretch: extra-expanded" value="#{mojBrojIgraDanaKontroler.sesti}" rendered="#{mojBrojIgraDanaKontroler.s}"/></td>
+           </tr></h3>
+           </table>
+           
+           <h:outputLabel value="Rešenje:" rendered="#{mojBrojIgraDanaKontroler.s}"></h:outputLabel>
+           <p:inputText value="#{mojBrojIgraDanaKontroler.mojIzraz}" placeholder="Unesite Vaš izraz" rendered="#{mojBrojIgraDanaKontroler.s}"/>
+           <br/><br/>
+           <p:commandButton value="Predaj rešenje" action="#{mojBrojIgraDanaKontroler.predajOdg()}" rendered="#{mojBrojIgraDanaKontroler.s}"></p:commandButton>
+           <p:commandButton value="STOP" update="rad txt_count" action="#{mojBrojIgraDanaKontroler.stop()}" rendered="#{mojBrojIgraDanaKontroler.dugme}"></p:commandButton>
+           <br/>
+           <i>***klikom na dugme stop izaberite traženi broj, kao i brojeve koje možete da koristite kako biste
+           uz pomoć osnovnih matematičkih operacija(+,-,*,/) došli do njega***</i>
+           
+     </p:panel>
+                    <br/><br/><br/>
+     <h:outputText id="kraj" value="#{mojBrojIgraDanaKontroler.poruka}" rendered="#{mojBrojIgraDanaKontroler.mess}"></h:outputText>
+     <br/>
+     <h:commandButton value="Sledeca igra" action="geografijaIgraDana" rendered="#{mojBrojIgraDanaKontroler.mess}"></h:commandButton>
+       </h:form>
+                    </center>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+

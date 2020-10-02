@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Kviskoteka</title>
+            </f:facet>
+        </h:head>
+
+        <h:body style="background-color: #E6E6FA">
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="55" resizable="true" style="background-color: azure" closable="true" collapsible="true">
+                    <table width="100%"><tr align="center">
+                            <td align="left" width="9%"> <p:commandButton action="#{LogInKontroler.logout()}" style="height: 30px" value="Log out" /></td>
+                        <td align="center" width="91%">  <h:outputLabel style="font-weight: bold;" value="IGRA DANA - zanimljiva geografija"/></td></tr></table>
+                
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="40" closable="true" style="background-color: azure" collapsible="true">
+                    <center> ETF Ekviskoteka </center>
+                </p:layoutUnit>
+
+ <p:layoutUnit position="center">
+   <center>
+  <h:form>
+      <p:commandButton id="txt_count" value="#{geografijaIgraDanaKontroler.tajmer}" rendered="#{geografijaIgraDanaKontroler.ok}"/>
+<p:poll interval="1" widgetVar="poll" listener="#{geografijaIgraDanaKontroler.inkrement()}" update="txt_count"/>
+   <br/>  
+<p:panel style="width: 500px; height: 420px">
+      
+      <p:commandButton value="#{geografijaIgraDanaKontroler.slovo}" style="font-weight: bold; font-size: 24px; font-stretch: extra-expanded"/> 
+      <br/><br/>
+  <h:panelGrid columns="2">
+    <p:outputLabel value="Država:"></p:outputLabel>
+    <p:inputText value="#{geografijaIgraDanaKontroler.pojmovi[0]}" style="width: 260px" placeholder="Unesite državu na traženo slovo"></p:inputText>
+    <p:outputLabel value="Grad:"/>
+    <p:inputText value="#{geografijaIgraDanaKontroler.pojmovi[1]}" style="width: 260px" placeholder="Unesite grad na traženo slovo"></p:inputText>
+    <p:outputLabel value="Jezero:"/>
+    <p:inputText value="#{geografijaIgraDanaKontroler.pojmovi[2]}" style="width: 260px" placeholder="Unesite jezero na traženo slovo"></p:inputText>
+    <p:outputLabel value="Planina:"/>
+    <p:inputText value="#{geografijaIgraDanaKontroler.pojmovi[3]}" style="width: 260px" placeholder="Unesite planinu na traženo slovo"></p:inputText>
+    <p:outputLabel value="Reka:"/>
+    <p:inputText value="#{geografijaIgraDanaKontroler.pojmovi[4]}" style="width: 260px" placeholder="Unesite reku na traženo slovo"></p:inputText>
+    <p:outputLabel value="Životinja:"/>
+    <p:inputText value="#{geografijaIgraDanaKontroler.pojmovi[5]}" style="width: 260px" placeholder="Unesite životinju na traženo slovo"></p:inputText>
+    <p:outputLabel value="Biljka:"/>
+    <p:inputText value="#{geografijaIgraDanaKontroler.pojmovi[6]}" style="width: 260px" placeholder="Unesite biljku na traženo slovo"></p:inputText>
+    <p:outputLabel value="Grupa:"/>
+    <p:inputText value="#{geografijaIgraDanaKontroler.pojmovi[7]}" style="width: 260px" placeholder="Unesite grupu na traženo slovo"></p:inputText>
+  </h:panelGrid><br/>
+      <p:commandButton value="Predaj odgovore" action="#{geografijaIgraDanaKontroler.predajOdg()}"></p:commandButton>
+     
+</p:panel>
+  
+  </h:form>
+       
+ </center>
+</p:layoutUnit>
+                
+</p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+

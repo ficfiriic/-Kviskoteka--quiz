@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Kviskoteka</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="60" resizable="false" closable="true" collapsible="true">
+                    <center>
+                        <b>Stranica posvećena administratoru</b>
+                    </center>
+                     </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                    <center> Kviskoteka ETF </center>
+                </p:layoutUnit>
+
+
+                <p:layoutUnit position="center">
+                    <center>
+        <h:form>
+            
+                Izaberite datum:
+                <p:calendar value="#{AdminIgraDanaKontroler.datum}"> </p:calendar>
+            <br/>
+                Dodajte anagram: 
+        
+                <h:dataTable value="#{AdminIgraDanaKontroler.anagrami}" var="ana">
+                    
+                    <h:column>#{ana.zagonetka}</h:column>
+                    <h:column>#{ana.resenje}</h:column>
+                    <h:column><h:commandButton value="Dodaj" action="#{AdminIgraDanaKontroler.dodajAnagram(ana)}"></h:commandButton>
+                    </h:column>
+                    
+                </h:dataTable>
+            
+                <h:commandButton value="Dodaj Igru" action="#{AdminIgraDanaKontroler.dodaj()}"></h:commandButton>
+                <h:outputText value="#{AdminIgraDanaKontroler.poruka}" rendered="#{AdminIgraDanaKontroler.ok}"></h:outputText>
+                <b/><b/><b/>
+       
+        
+        
+        </h:form>
+                    </center>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+
+
+
+

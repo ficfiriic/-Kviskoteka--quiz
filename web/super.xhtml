@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Kviskoteka</title>
+            </f:facet>
+        </h:head>
+
+        <h:body style="background-color: #E6E6FA">
+            <p:layout fullPage="true">
+
+                    <p:layoutUnit position="north" size="55" resizable="true" style="background-color: azure" closable="true" collapsible="true">
+                        <table width="100%"><tr align="center">
+                            <td align="left" width="9%"> <p:commandButton action="#{LogInKontroler.logout()}" style="height: 30px" value="Log out" /></td>
+                        <td align="center" width="91%">  <h:outputLabel style="font-weight: bold;" value="Stranica posvećena supervizoru"/></td></tr></table>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="40" style="background-color: azure" closable="true" collapsible="true">
+                   <center> ETF Ekviskoteka </center>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+   <!--                 <center>
+                   <h:form>
+                    <p:menu>
+                       <p:menuitem value="Anagram" action="superAnagram" />
+                       <p:menuitem value="5x5" action="superPet" />
+                       <p:menuitem value="Provera pojmova" action="superGeografija" />
+                       <p:menuitem value="Pehar" action="superPehar" />
+                                          
+                   </p:menu>
+                   </h:form>
+                   </center>-->
+   <h:form>
+   <p:tabMenu activeIndex="#{param.i}">
+       <p:menuitem value="Dodavanje anagrama" outcome="super.xhtml">
+        <f:param name="i" value="0" />
+    </p:menuitem>
+    <p:menuitem value="Dodavanje reči za igru 5x5" outcome="superPet.xhtml">
+        <f:param name="i" value="1" />
+    </p:menuitem>
+    <p:menuitem value="Provera pojmova u zanimljivoj geografiji" outcome="superGeografija.xhtml">
+        <f:param name="i" value="2" />
+    </p:menuitem>
+       <p:menuitem value="Dodavanje pitanja za igru pehar" outcome="superPehar.xhtml">
+        <f:param name="i" value="3" />
+    </p:menuitem>
+</p:tabMenu>
+   </h:form>
+   <br/><br/>
+   <h:form>
+       <center>
+           <p:panel style="height:200px; width: 500px ">
+               <h:panelGrid columns="2">
+            Unesite zagonetku:
+            <p:inputText value="#{SuperAnagramKontroler.zagonetka}"></p:inputText>
+                            
+            Unesite rešenje:
+            <p:inputText value="#{SuperAnagramKontroler.resenje}"></p:inputText>
+                       
+        </h:panelGrid>
+           <br/>             
+            <p:commandButton value="Unesite anagram" action="#{SuperAnagramKontroler.ubaci()}"/>
+            <br/>
+            
+            <p:messages id="messages" showDetail="true" closable="true">
+                <p:autoUpdate/>
+            </p:messages> 
+          
+       </p:panel>  
+       </center>
+   </h:form>   
+   
+   
+                </p:layoutUnit> 
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+
